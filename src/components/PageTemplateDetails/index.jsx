@@ -12,17 +12,19 @@ class PageTemplateDetails extends React.Component {
         <Sidebar />
         <div className="content">
           <div className="content__inner">
-            <div className="page" data-kontent-item-id={kontentItemPage.system.id}>
-              <h1 className="page__title"
-                data-kontent-element-codename="title">
+            <div
+              className="page"
+              data-kontent-item-id={kontentItemPage.system.id}
+            >
+              <h1 className="page__title" data-kontent-element-codename="title">
                 {kontentItemPage.elements.title.value}
               </h1>
               <div
                 className="page__body"
                 /* eslint-disable-next-line react/no-danger */
-                dangerouslySetInnerHTML={
-                  { __html: kontentItemPage.elements.description.value }
-                }
+                dangerouslySetInnerHTML={{
+                  __html: kontentItemPage.elements.description.value,
+                }}
                 data-kontent-element-codename="description"
               />
             </div>

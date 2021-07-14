@@ -10,9 +10,10 @@ class ArticlesRoute extends React.Component {
     const routeData = this.props
     const items = []
     const title = routeData.data.kontentItemSiteMetadata.elements.title.value
-    const subtitle = routeData.data.kontentItemSiteMetadata.elements.subtitle.value
+    const subtitle =
+      routeData.data.kontentItemSiteMetadata.elements.subtitle.value
     const articles = routeData.data.allKontentItemArticle.nodes
-    articles.forEach(article => {
+    articles.forEach((article) => {
       items.push(<Article data={article} key={article.elements.slug.value} />)
     })
 
@@ -37,7 +38,7 @@ export default ArticlesRoute
 
 export const pageQuery = graphql`
   query ArticlesQuery {
-    kontentItemSiteMetadata(system: {codename: {eq: "site_metadata"}}) {
+    kontentItemSiteMetadata(system: { codename: { eq: "site_metadata" } }) {
       elements {
         subtitle {
           value
@@ -47,7 +48,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allKontentItemArticle(filter: {preferred_language: {eq: "en-US"}}) {
+    allKontentItemArticle(filter: { preferred_language: { eq: "en-US" } }) {
       nodes {
         elements {
           category {

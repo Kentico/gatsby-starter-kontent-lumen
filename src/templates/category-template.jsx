@@ -8,7 +8,8 @@ import CategoryTemplateDetails from '../components/CategoryTemplateDetails'
 class CategoryTemplate extends React.Component {
   render() {
     const categoryTemplateData = this.props
-    const siteTitle = categoryTemplateData.data.kontentItemSiteMetadata.elements.title.value
+    const siteTitle =
+      categoryTemplateData.data.kontentItemSiteMetadata.elements.title.value
     const categoryTitle = categoryTemplateData.pageContext.categoryTitle
 
     return (
@@ -27,14 +28,25 @@ export default CategoryTemplate
 
 export const pageQuery = graphql`
   query CategoryPage($categoryCodename: String) {
-    kontentItemSiteMetadata(system: {codename: {eq: "site_metadata"}}) {
+    kontentItemSiteMetadata(system: { codename: { eq: "site_metadata" } }) {
       elements {
         title {
           value
         }
       }
     }
-    allKontentItemArticle(filter: {elements: {category: {value: {elemMatch: {system: {codename: {eq: $categoryCodename}}}}}}, preferred_language: {eq: "en-US"}}) {
+    allKontentItemArticle(
+      filter: {
+        elements: {
+          category: {
+            value: {
+              elemMatch: { system: { codename: { eq: $categoryCodename } } }
+            }
+          }
+        }
+        preferred_language: { eq: "en-US" }
+      }
+    ) {
       nodes {
         system {
           codename

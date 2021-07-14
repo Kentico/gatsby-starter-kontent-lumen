@@ -7,7 +7,8 @@ import PageTemplateDetails from '../components/PageTemplateDetails'
 class PageTemplate extends React.Component {
   render() {
     const pageTemplateData = this.props
-    const title = pageTemplateData.data.kontentItemSiteMetadata.elements.title.value
+    const title =
+      pageTemplateData.data.kontentItemSiteMetadata.elements.title.value
     const subtitle = pageTemplateData.data.kontentItemPage.elements.title.value
 
     return (
@@ -15,7 +16,13 @@ class PageTemplate extends React.Component {
         <div>
           <Helmet>
             <title>{`${title} - ${subtitle}`}</title>
-            <meta name="description" content={pageTemplateData.data.kontentItemPage.elements.meta_description.value} />
+            <meta
+              name="description"
+              content={
+                pageTemplateData.data.kontentItemPage.elements.meta_description
+                  .value
+              }
+            />
           </Helmet>
           <PageTemplateDetails {...pageTemplateData} />
         </div>
@@ -28,7 +35,7 @@ export default PageTemplate
 
 export const pageQuery = graphql`
   query PageQuery($codename: String!, $language: String!) {
-    kontentItemSiteMetadata(system: {codename: {eq: "site_metadata"}}) {
+    kontentItemSiteMetadata(system: { codename: { eq: "site_metadata" } }) {
       elements {
         copyright {
           value
@@ -41,7 +48,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    kontentItemAuthor(system: {codename: {eq: "author"}}) {
+    kontentItemAuthor(system: { codename: { eq: "author" } }) {
       elements {
         bio {
           value
@@ -75,8 +82,8 @@ export const pageQuery = graphql`
       }
     }
     kontentItemPage(
-      preferred_language: {eq: $language},
-      system: {codename: {eq: $codename}}
+      preferred_language: { eq: $language }
+      system: { codename: { eq: $codename } }
     ) {
       id
       system {
@@ -86,7 +93,7 @@ export const pageQuery = graphql`
         description {
           value
         }
-        meta_description  {
+        meta_description {
           value
         }
         title {

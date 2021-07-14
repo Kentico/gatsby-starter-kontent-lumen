@@ -12,7 +12,7 @@ const linkUsedByContentItems = (
   parentTypeCodename,
   childTypeCodename,
   linkedElementCodename,
-  backReferenceName
+  backReferenceName,
 ) => {
   const {
     createResolvers,
@@ -54,7 +54,7 @@ const linkUsedByContentItems = (
             type: parentGraphqlType,
             firstOnly: false,
           })
-          return linkedNodes;
+          return linkedNodes
         },
       },
     },

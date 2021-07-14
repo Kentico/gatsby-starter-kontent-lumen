@@ -7,7 +7,7 @@ class TagTemplateDetails extends React.Component {
     const tagTitle = this.props.pageContext.tagTitle
     const articles = this.props.data.allKontentItemArticle.nodes
 
-    articles.forEach(article => {
+    articles.forEach((article) => {
       items.push(<Article data={article} key={article.elements.slug.value} />)
     })
 

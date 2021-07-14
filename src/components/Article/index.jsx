@@ -8,10 +8,26 @@ class Article extends React.Component {
   render() {
     const title = _.get(this.props, 'data.elements.title.value', 'N/A')
     const date = _.get(this.props, 'data.elements.date.value', 'N/A')
-    const category = _.get(this.props, 'data.elements.category.value[0].elements.title.value', 'N/A')
-    const categorySlug = _.get(this.props, 'data.elements.category.value[0].elements.slug.value', 'N/A')
-    const description = _.get(this.props, 'data.elements.description.value', 'N/A')
-    const slug = `/articles/${_.get(this.props, 'data.elements.slug.value', 'N/A')}`
+    const category = _.get(
+      this.props,
+      'data.elements.category.value[0].elements.title.value',
+      'N/A'
+    )
+    const categorySlug = _.get(
+      this.props,
+      'data.elements.category.value[0].elements.slug.value',
+      'N/A'
+    )
+    const description = _.get(
+      this.props,
+      'data.elements.description.value',
+      'N/A'
+    )
+    const slug = `/articles/${_.get(
+      this.props,
+      'data.elements.slug.value',
+      'N/A'
+    )}`
     const itemId = _.get(this.props, 'data.system.id')
 
     return (
@@ -25,8 +41,15 @@ class Article extends React.Component {
             {moment(date).format('MMMM YYYY')}
           </time>
           <span className="article__meta-divider" />
-          <span className="article__meta-category" key={categorySlug}  data-kontent-element-codename="category">
-            <Link to={`/categories/${categorySlug}/`} className="article__meta-category-link">
+          <span
+            className="article__meta-category"
+            key={categorySlug}
+            data-kontent-element-codename="category"
+          >
+            <Link
+              to={`/categories/${categorySlug}/`}
+              className="article__meta-category-link"
+            >
               {category}
             </Link>
           </span>
@@ -36,7 +59,12 @@ class Article extends React.Component {
             {title}
           </Link>
         </h2>
-        <p className="article__description"  data-kontent-element-codename="description">{description}</p>
+        <p
+          className="article__description"
+          data-kontent-element-codename="description"
+        >
+          {description}
+        </p>
         <Link className="article__readmore" to={slug}>
           Read
         </Link>

@@ -8,7 +8,8 @@ import Sidebar from '../components/Sidebar'
 class CategoriesRoute extends React.Component {
   render() {
     const categoriesData = this.props
-    const title = categoriesData.data.kontentItemSiteMetadata.elements.title.value
+    const title =
+      categoriesData.data.kontentItemSiteMetadata.elements.title.value
     const categories = this.props.data.allKontentItemCategory.nodes
 
     return (
@@ -23,7 +24,7 @@ class CategoriesRoute extends React.Component {
                 <div className="page__body">
                   <div className="categories">
                     <ul className="categories__list">
-                      {categories.map(category => (
+                      {categories.map((category) => (
                         <li
                           key={category.system.codename}
                           className="categories__list-item"
@@ -34,7 +35,8 @@ class CategoriesRoute extends React.Component {
                             to={`/categories/${category.elements.slug.value}/`}
                             className="categories__list-item-link"
                           >
-                            {category.elements.slug.value} ({_.get(category.used_by_articles, 'length', 'N/A')})
+                            {category.elements.slug.value} (
+                            {_.get(category.used_by_articles, 'length', 'N/A')})
                           </Link>
                         </li>
                       ))}
@@ -54,14 +56,14 @@ export default CategoriesRoute
 
 export const pageQuery = graphql`
   {
-    kontentItemSiteMetadata(system: {codename: {eq: "site_metadata"}}) {
+    kontentItemSiteMetadata(system: { codename: { eq: "site_metadata" } }) {
       elements {
         title {
           value
         }
       }
     }
-    allKontentItemCategory(filter: {preferred_language: {eq: "en-US"}}) {
+    allKontentItemCategory(filter: { preferred_language: { eq: "en-US" } }) {
       nodes {
         elements {
           slug {

@@ -8,81 +8,80 @@ import './style.scss'
 
 const sidebar = ({ isHomePage }) => {
   const data = useStaticQuery(graphql`
-  query SidebarQuery {
-    kontentItemSiteMetadata(system: {codename: {eq: "site_metadata"}}) {
-      elements {
-        copyright {
-          value
-        }
-        subtitle {
-          value
-        }
-        title {
-          value
+    query SidebarQuery {
+      kontentItemSiteMetadata(system: { codename: { eq: "site_metadata" } }) {
+        elements {
+          copyright {
+            value
+          }
+          subtitle {
+            value
+          }
+          title {
+            value
+          }
         }
       }
-    }
-    kontentItemMenu(system: {codename: {eq: "navigation_menu"}}) {
-      elements {
-        menu_items {
-          value {
-            ... on kontent_item_menu_item {
-              system {
-                id
-              }
-              id
-              elements {
-                label {
-                  value
+      kontentItemMenu(system: { codename: { eq: "navigation_menu" } }) {
+        elements {
+          menu_items {
+            value {
+              ... on kontent_item_menu_item {
+                system {
+                  id
                 }
-                slug {
-                  value
+                id
+                elements {
+                  label {
+                    value
+                  }
+                  slug {
+                    value
+                  }
                 }
               }
             }
           }
         }
       }
-    }
-    kontentItemAuthor(system: {codename: {eq: "author"}}) {
-      system {
-        id
-      }
-      elements {
-        bio {
-          value
+      kontentItemAuthor(system: { codename: { eq: "author" } }) {
+        system {
+          id
         }
-        email {
-          value
-        }
-        github {
-          value
-        }
-        name {
-          value
-        }
-        rss {
-          value
-        }
-        telegram {
-          value
-        }
-        twitter {
-          value
-        }
-        vk {
-          value
-        }
-        avatar_image {
-          value {
-            url
+        elements {
+          bio {
+            value
+          }
+          email {
+            value
+          }
+          github {
+            value
+          }
+          name {
+            value
+          }
+          rss {
+            value
+          }
+          telegram {
+            value
+          }
+          twitter {
+            value
+          }
+          vk {
+            value
+          }
+          avatar_image {
+            value {
+              url
+            }
           }
         }
       }
     }
-  }
-`
-  )
+  `)
 
   const author = data.kontentItemAuthor
   const menu = data.kontentItemMenu
@@ -105,19 +104,28 @@ const sidebar = ({ isHomePage }) => {
               />
             </Link>
             {isHomePage ? (
-              <h1 className="sidebar__author-title" data-kontent-element-codename="name">
+              <h1
+                className="sidebar__author-title"
+                data-kontent-element-codename="name"
+              >
                 <Link className="sidebar__author-title-link" to="/">
                   {author.elements.name.value}
                 </Link>
               </h1>
             ) : (
-              <h2 className="sidebar__author-title" data-kontent-element-codename="name">
+              <h2
+                className="sidebar__author-title"
+                data-kontent-element-codename="name"
+              >
                 <Link className="sidebar__author-title-link" to="/">
                   {author.elements.name.value}
                 </Link>
               </h2>
             )}
-            <p className="sidebar__author-subtitle" data-kontent-element-codename="bio">
+            <p
+              className="sidebar__author-subtitle"
+              data-kontent-element-codename="bio"
+            >
               {author.elements.bio.value}
             </p>
           </div>

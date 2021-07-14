@@ -83,13 +83,13 @@ exports.createPages = ({ graphql, actions }) => {
       }
 
       _.each(result.data.allKontentItemMenuItem.nodes, node => {
-        const contentPage = node.elements.content.value[0];
+        const contentPage = node.elements.content.value[0]
         contentPage && createPage({
           path: `/${node.elements.slug.value}/`,
           component: slash(pageTemplate),
-          context: { 
+          context: {
             language: `${contentPage.preferred_language}`,
-            codename: `${contentPage.system.codename}` 
+            codename: `${contentPage.system.codename}`,
           },
         })
       })

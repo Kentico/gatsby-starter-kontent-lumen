@@ -15,7 +15,10 @@ class NotFoundRoute extends React.Component {
                 <h1 className="page__title">NOT FOUND</h1>
                 <div className="page__body">
                   <p>
-                    {this.props.data.kontentItemSiteMetadata.elements.page_not_found_message.value}
+                    {
+                      this.props.data.kontentItemSiteMetadata.elements
+                        .page_not_found_message.value
+                    }
                   </p>
                 </div>
               </div>
@@ -31,7 +34,7 @@ export default NotFoundRoute
 
 export const pageQuery = graphql`
   query NotFoundQuery {
-    kontentItemSiteMetadata(system: {codename: {eq: "site_metadata"}}) {
+    kontentItemSiteMetadata(system: { codename: { eq: "site_metadata" } }) {
       elements {
         page_not_found_message {
           value
